@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wheel Art Studio by Mike</title>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+    <script src="index.js"></script>
+    <script src="elements.js"></script>
+    <script src="files.js"></script>
+  </head>
+  <body>
+    <div class="modules">
+      <!--
+      <div class="module">
+        <div class="title">Suh dude</div>
+        <div class="content">
+          So uh just like try drawing <br/>
+          on the white part down <br/>
+          there, yeah? ehehehe <br/><br/>
+          if ya wanna get more <br/>
+          creative just like change <br/>
+          the things on the right/below <br/><br/>
+          lines of code: 637 wew <br/>
+          html: 23% <br/>
+          css: 25% <br/>
+          js: 52%
+        </div>
+      </div>-->
+      <div class="module">
+        <div class="title">Color Picker</div>
+        <div class="content">
+          <table>
+            <tr>
+              <td>R:</td>
+              <td><input type="range" id="colorR" min="0" max="255" value="0" /></td>
+              <td><input type="number" id="colorRdisplay" min="0" max="255" /></td>
+            </tr>
+            <tr>
+              <td>G:</td>
+              <td><input type="range" id="colorG" min="0" max="255"  value="0" /></td>
+              <td><input type="number" id="colorGdisplay" min="0" max="255" /></td>
+            </tr>
+            <tr>
+              <td>B:</td>
+              <td><input type="range" id="colorB" min="0" max="255"  value="0" /></td>
+              <td><input type="number" id="colorBdisplay" min="0" max="255" /></td>
+            </tr>
+            <tr>
+              <td>A:</td>
+              <td><input type="range" id="colorA" min="0" max="100"  value="100" /></td>
+              <td><input type="number" id="colorAdisplay" min="0" max="100" /></td>
+            </tr>
+          </table>
+          <div class="colorPreviewHolder">
+            <div id="colorPreview"></div>
+          </div>
+          <div class="colorPresets">
+            <a href="#" onclick="setColor(this);" r="0" g="0" b="0" a="100" style="background-color: #000"></a>
+            <a href="#" onclick="setColor(this);" r="150" g="150" b="150" a="100" style="background-color: rgba(150, 150, 150, 1)"></a>
+            <a href="#" onclick="setColor(this);" r="255" g="255" b="255" a="100" style="background-color: #FFF"></a>
+            <a href="#" onclick="setColor(this);" r="233" g="30" b="99" a="100" style="background-color: rgba(233, 30, 99, 1)"></a>
+            <a href="#" onclick="setColor(this);" r="156" g="39" b="176" a="100" style="background-color: rgba(156, 39, 176, 1)"></a>
+            <a href="#" onclick="setColor(this);" r="244" g="67" b="54" a="100" style="background-color: rgba(244, 67, 54, 1)"></a>
+            <a href="#" onclick="setColor(this);" r="255" g="98" b="0" a="100" style="background-color: rgba(255, 98, 0, 1)"></a>
+            <a href="#" onclick="setColor(this);" r="255" g="235" b="59" a="100" style="background-color: rgba(255, 235, 59, 1)"></a>
+            <a href="#" onclick="setColor(this);" r="76" g="175" b="80" a="100" style="background-color: rgba(76, 175, 80, 1)"></a>
+            <a href="#" onclick="setColor(this);" r="3" g="169" b="244" a="100" style="background-color: rgba(3, 169, 244, 1)"></a>
+            <br class="clear" />
+          </div>
+        </div>
+      </div>
+      <div class="module">
+        <div class="title">Stroke Settings</div>
+        <div class="content">
+          <table>
+            <tr>
+              <td>Stroke Width:</td>
+              <td><input type="range" id="swidth" min="1" max="50"  value="3" /></td>
+              <td><input type="number" id="swidthdisplay" min="1" max="50" /></td>
+            </tr>
+            <tr>
+              <td rowspan="2">Stroke Lag:</td>
+              <td><input type="range" id="lag" min="0" max="20"  value="5" /></td>
+              <td><input type="number" id="lagdisplay" min="0" max="20" /></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <a class="presets" href="javascript: setLag(0);">Instant</a>
+                <a class="presets" href="javascript: setLag(5);">Smooth</a>
+                <a class="presets" href="javascript: setLag(10);">Smoother</a>
+                <a class="presets" href="javascript: setLag(20);">Slow</a>
+              </td>
+            </tr>
+            <tr>
+              <td rowspan="2">Angle Count:</td>
+              <td><input type="range" id="angles" min="1" max="128"  value="8" /></td>
+              <td><input type="number" id="anglesdisplay" min="1" max="128" /></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <a class="presets" href="javascript: setAngles(1);">1</a>
+                <a class="presets" href="javascript: setAngles(2);">2</a>
+                <a class="presets" href="javascript: setAngles(4);">4</a>
+                <a class="presets" href="javascript: setAngles(8);">8</a>
+                <a class="presets" href="javascript: setAngles(16);">16</a>
+                <a class="presets" href="javascript: setAngles(32);">32</a>
+                <a class="presets" href="javascript: setAngles(64);">64</a>
+                <br/>
+                <a class="presets" href="javascript: setAngles(3);">3</a>
+                <a class="presets" href="javascript: setAngles(6);">6</a>
+                <a class="presets" href="javascript: setAngles(9);">9</a>
+                <a class="presets" href="javascript: setAngles(27);">27</a>
+                <a class="presets" href="javascript: setAngles(81);">81</a>
+                <a class="presets" href="javascript: setAngles(96);">96</a>
+                <a class="presets" href="javascript: setAngles(128);">128</a>
+              </td>
+            </tr>
+            <tr>
+              <td>Toggles: </td>
+              <td colspan="2">
+                <label><input type="checkbox" id="strokenewlayer" /> Create new layer on draw</label>
+                <label><input type="checkbox" id="strokefollow" checked /> Follow Mousement (BETA)</label>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="module">
+        <div class="title">Guides</div>
+        <div class="content">
+          <table>
+            <tr><td>
+              <label><input type="checkbox" id="strokeguide" checked /> Stroke Cursor </label>
+              <label><input type="checkbox" id="anglesguide" checked /> Angle Guides </label>
+            </td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="module">
+        <div class="title">Actions</div>
+        <div class="content">
+          <a class="action" href="javascript: exportToJson(false);">Export All Layers</a>
+          <a class="action" href="javascript: exportToJson(true);">Export Visible Layers</a>
+          <a class="action" href="javascript: download(true);">Download PNG (transparent)</a>
+          <a class="action" href="javascript: download(false);">Download PNG (white backgorund)</a>
+          <!--<input class="action" type="file" accept=".json" />-->
+        </div>
+      </diV>
+      <div class="module">
+        <div class="title">Layers</div>
+        <div class="content">
+          <div class="layerFunctions">
+            <a href="javascript: newLayer();">New Layer</a>
+            <a href="javascript: deleteLayer();">Delete Layer</a>
+            <a href="javascript: moveLayerUp();">Move Up</a>
+            <a href="javascript: moveLayerDown();">Move Down</a>
+            <a href="javascript: mergeLayerDown();">Merge Down</a>
+          </div>
+          <div id="layers"></div>
+        </div>
+      </div>
+      <br class="clear" />
+    </div>
+    <div id="canvases">
+      <canvas class="guides" id="guides" width="800" height="800"></canvas>
+    </div>
+  </body>
+</html>
